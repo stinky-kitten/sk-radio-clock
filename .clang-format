@@ -1,0 +1,14 @@
+# .clang-format
+# sk-radio-clock
+# Created by Gary J.H. Atkinson on 2026-09-24
+
+BasedOnStyle: LLVM
+IndentWidth: 4
+TabWidth: 4
+ColumnLimit: 120
+BreakBeforeBraces: Attach
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortEnumsOnASingleLine: false
+PointerAlignment: Left
+SpaceBeforeParens: ControlStatements

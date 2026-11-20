@@ -1,0 +1,65 @@
+# ===== OS / Editor =====
+.DS_Store
+._*
+*.swp
+*.swo
+*.tmp
+*.bak
+.idea/
+
+# Ignore VS Code by default…
+.vscode/*
+
+# …but keep the team-useful bits
+!.vscode/tasks.json
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/launch.json
+
+# clangd / VS Code index + caches
+.cache/
+
+# ===== SwiftPM =====
+.build/
+.swiftpm/
+*.xcodeproj/
+*.xcworkspace/
+xcuserdata/
+DerivedData/
+
+# ===== CMake =====
+build/
+build-*/
+cmake-build-*/
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+Testing/
+
+# ===== Compilers / Linkers =====
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.dylib
+*.dll
+*.elf
+*.map
+*.uf2
+sk-radio-clock.bin
+sk-radio-clock.hex
+sk-radio-clock.dis
+*.d
+*.gcda
+*.gcno
+*.gcov
+
+# ===== Misc =====
+*.log
+
+# Local time-source selection and Wi-Fi secrets
+/Config/WiFiCredentials.swift

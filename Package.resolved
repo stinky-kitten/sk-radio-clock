@@ -1,0 +1,15 @@
+{
+  "originHash" : "ef3923cdf19428f6b70f6233ccca1f5253f55c936445e25e04b7cda396d7e60e",
+  "pins" : [
+    {
+      "identity" : "skls-hub75-dist",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/stinky-kitten/skls-hub75-dist.git",
+      "state" : {
+        "revision" : "826ad354235e8c93ddac96722a09287c167b25a7",
+        "version" : "0.1.0-experimental.3"
+      }
+    }
+  ],
+  "version" : 3
+}

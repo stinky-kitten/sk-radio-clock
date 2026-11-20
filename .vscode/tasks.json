@@ -1,0 +1,388 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Swift: Check Formatting",
+            "type": "process",
+            "command": "${userHome}/.pico-sdk/cmake/v4.3.4/bin/cmake",
+            "args": [
+                "-DSK_SWIFT_EXECUTABLE=${userHome}/.swiftly/bin/swift",
+                "-P",
+                "${workspaceFolder}/cmake/CheckSwiftFormatting.cmake"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            },
+            "problemMatcher": {
+                "owner": "swift-format",
+                "source": "swift-format",
+                "fileLocation": "absolute",
+                "pattern": {
+                    "regexp": "^(.*):(\\d+):(\\d+): (error|warning): (.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                }
+            },
+            "windows": {
+                "command": "${env:USERPROFILE}/.pico-sdk/cmake/v4.3.4/bin/cmake.exe",
+                "args": [
+                    "-DSK_SWIFT_EXECUTABLE=${userHome}/.swiftly/bin/swift.exe",
+                    "-P",
+                    "${workspaceFolder}/cmake/CheckSwiftFormatting.cmake"
+                ]
+            }
+        },
+        {
+            "label": "Swift: Test",
+            "type": "process",
+            "command": "${userHome}/.swiftly/bin/swift",
+            "args": [
+                "test"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "dependsOrder": "sequence",
+            "dependsOn": "Swift: Check Formatting",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            },
+            "problemMatcher": "$swiftc",
+            "windows": {
+                "command": "${userHome}/.swiftly/bin/swift.exe"
+            }
+        },
+        {
+            "label": "Compile Project",
+            "type": "process",
+            "isBuildCommand": true,
+            "command": "${userHome}/.pico-sdk/cmake/v4.3.4/bin/cmake",
+            "args": [
+                "--build",
+                "${workspaceFolder}/build",
+                "--parallel"
+            ],
+            "dependsOrder": "sequence",
+            "dependsOn": "Check Release Configuration",
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            },
+            "problemMatcher": "$gcc",
+            "windows": {
+                "command": "${env:USERPROFILE}/.pico-sdk/cmake/v4.3.4/bin/cmake.exe"
+            }
+        },
+        {
+            "label": "Configure Project",
+            "type": "process",
+            "command": "${userHome}/.pico-sdk/cmake/v4.3.4/bin/cmake",
+            "args": [
+                "--fresh",
+                "-S",
+                "${workspaceFolder}",
+                "-B",
+                "${workspaceFolder}/build",
+                "-G",
+                "Ninja",
+                "-DCMAKE_BUILD_TYPE=Release",
+                "-DCMAKE_MAKE_PROGRAM=${userHome}/.pico-sdk/ninja/v1.13.2/ninja",
+                "-DCMAKE_Swift_COMPILER=${userHome}/.swiftly/bin/swiftc",
+                "-DPICO_BOARD=${input:picoBoard}",
+                "-DPICO_PLATFORM=rp2350-arm-s"
+            ],
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            },
+            "problemMatcher": [],
+            "windows": {
+                "command": "${env:USERPROFILE}/.pico-sdk/cmake/v4.3.4/bin/cmake.exe",
+                "args": [
+                    "--fresh",
+                    "-S",
+                    "${workspaceFolder}",
+                    "-B",
+                    "${workspaceFolder}/build",
+                    "-G",
+                    "Ninja",
+                    "-DCMAKE_BUILD_TYPE=Release",
+                    "-DCMAKE_MAKE_PROGRAM=${env:USERPROFILE}/.pico-sdk/ninja/v1.13.2/ninja.exe",
+                    "-DCMAKE_Swift_COMPILER=${userHome}/.swiftly/bin/swiftc",
+                    "-DPICO_BOARD=${input:picoBoard}",
+                    "-DPICO_PLATFORM=rp2350-arm-s"
+                ]
+            }
+        },
+        {
+            "label": "Compile Debug Project",
+            "type": "process",
+            "command": "${userHome}/.pico-sdk/cmake/v4.3.4/bin/cmake",
+            "args": [
+                "--build",
+                "${workspaceFolder}/build-debug",
+                "--parallel"
+            ],
+            "dependsOrder": "sequence",
+            "dependsOn": "Check Debug Configuration",
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            },
+            "problemMatcher": "$gcc",
+            "windows": {
+                "command": "${env:USERPROFILE}/.pico-sdk/cmake/v4.3.4/bin/cmake.exe"
+            }
+        },
+        {
+            "label": "Configure Debug Project",
+            "type": "process",
+            "command": "${userHome}/.pico-sdk/cmake/v4.3.4/bin/cmake",
+            "args": [
+                "--fresh",
+                "-S",
+                "${workspaceFolder}",
+                "-B",
+                "${workspaceFolder}/build-debug",
+                "-G",
+                "Ninja",
+                "-DCMAKE_BUILD_TYPE=Debug",
+                "-DCMAKE_MAKE_PROGRAM=${userHome}/.pico-sdk/ninja/v1.13.2/ninja",
+                "-DCMAKE_Swift_COMPILER=${userHome}/.swiftly/bin/swiftc",
+                "-DPICO_BOARD=${input:picoBoard}",
+                "-DPICO_PLATFORM=rp2350-arm-s"
+            ],
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            },
+            "problemMatcher": [],
+            "windows": {
+                "command": "${env:USERPROFILE}/.pico-sdk/cmake/v4.3.4/bin/cmake.exe",
+                "args": [
+                    "--fresh",
+                    "-S",
+                    "${workspaceFolder}",
+                    "-B",
+                    "${workspaceFolder}/build-debug",
+                    "-G",
+                    "Ninja",
+                    "-DCMAKE_BUILD_TYPE=Debug",
+                    "-DCMAKE_MAKE_PROGRAM=${env:USERPROFILE}/.pico-sdk/ninja/v1.13.2/ninja.exe",
+                    "-DCMAKE_Swift_COMPILER=${userHome}/.swiftly/bin/swiftc",
+                    "-DPICO_BOARD=${input:picoBoard}",
+                    "-DPICO_PLATFORM=rp2350-arm-s"
+                ]
+            }
+        },
+        {
+            "label": "Run Project",
+            "type": "process",
+            "command": "${env:HOME}/.pico-sdk/picotool/2.3.1/picotool/picotool",
+            "args": [
+                "load",
+                "${command:raspberry-pi-pico.launchTargetPath}",
+                "-fx"
+            ],
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            },
+            "problemMatcher": [],
+            "windows": {
+                "command": "${env:USERPROFILE}/.pico-sdk/picotool/2.3.1/picotool/picotool.exe"
+            }
+        },
+        {
+            "label": "Flash",
+            "type": "process",
+            "command": "${userHome}/.pico-sdk/openocd/0.12.0+dev/openocd",
+            "args": [
+                "-s",
+                "${userHome}/.pico-sdk/openocd/0.12.0+dev/scripts",
+                "-f",
+                "interface/cmsis-dap.cfg",
+                "-f",
+                "target/${command:raspberry-pi-pico.getTarget}.cfg",
+                "-c",
+                "adapter speed 5000; program \"${command:raspberry-pi-pico.launchTargetPath}\" verify reset exit"
+            ],
+            "problemMatcher": [],
+            "windows": {
+                "command": "${env:USERPROFILE}/.pico-sdk/openocd/0.12.0+dev/openocd.exe"
+            }
+        },
+        {
+            "label": "Rescue Reset",
+            "type": "process",
+            "command": "${userHome}/.pico-sdk/openocd/0.12.0+dev/openocd",
+            "args": [
+                "-s",
+                "${userHome}/.pico-sdk/openocd/0.12.0+dev/scripts",
+                "-f",
+                "interface/cmsis-dap.cfg",
+                "-f",
+                "target/${command:raspberry-pi-pico.getChip}-rescue.cfg",
+                "-c",
+                "adapter speed 5000; reset halt; exit"
+            ],
+            "problemMatcher": [],
+            "windows": {
+                "command": "${env:USERPROFILE}/.pico-sdk/openocd/0.12.0+dev/openocd.exe"
+            }
+        },
+        {
+            "label": "RISC-V Reset (RP2350)",
+            "type": "process",
+            "command": "${userHome}/.pico-sdk/openocd/0.12.0+dev/openocd",
+            "args": [
+                "-s",
+                "${userHome}/.pico-sdk/openocd/0.12.0+dev/scripts",
+                "-c",
+                "set USE_CORE { rv0 rv1 cm0 cm1 }",
+                "-f",
+                "interface/cmsis-dap.cfg",
+                "-f",
+                "target/rp2350.cfg",
+                "-c",
+                "adapter speed 5000; init;",
+                "-c",
+                "write_memory 0x40120158 8 { 0x3 }; echo [format \"Info : ARCHSEL 0x%02x\" [read_memory 0x40120158 8 1]];",
+                "-c",
+                "reset halt; targets rp2350.rv0; echo [format \"Info : ARCHSEL_STATUS 0x%02x\" [read_memory 0x4012015C 8 1]]; exit"
+            ],
+            "problemMatcher": [],
+            "windows": {
+                "command": "${env:USERPROFILE}/.pico-sdk/openocd/0.12.0+dev/openocd.exe"
+            }
+        },
+        {
+            "label": "Configure Profile Project",
+            "type": "process",
+            "command": "${userHome}/.pico-sdk/cmake/v4.3.4/bin/cmake",
+            "args": [
+                "--fresh",
+                "-S",
+                "${workspaceFolder}",
+                "-B",
+                "${workspaceFolder}/build-profile",
+                "-G",
+                "Ninja",
+                "-DCMAKE_BUILD_TYPE=Release",
+                "-DSK_RADIO_CLOCK_RENDER_PROFILE=ON",
+                "-DCMAKE_MAKE_PROGRAM=${userHome}/.pico-sdk/ninja/v1.13.2/ninja",
+                "-DCMAKE_Swift_COMPILER=${userHome}/.swiftly/bin/swiftc",
+                "-DPICO_BOARD=${input:picoBoard}",
+                "-DPICO_PLATFORM=rp2350-arm-s"
+            ],
+            "problemMatcher": [],
+            "windows": {
+                "command": "${env:USERPROFILE}/.pico-sdk/cmake/v4.3.4/bin/cmake.exe",
+                "args": [
+                    "--fresh",
+                    "-S",
+                    "${workspaceFolder}",
+                    "-B",
+                    "${workspaceFolder}/build-profile",
+                    "-G",
+                    "Ninja",
+                    "-DCMAKE_BUILD_TYPE=Release",
+                    "-DSK_RADIO_CLOCK_RENDER_PROFILE=ON",
+                    "-DCMAKE_MAKE_PROGRAM=${env:USERPROFILE}/.pico-sdk/ninja/v1.13.2/ninja.exe",
+                    "-DCMAKE_Swift_COMPILER=${userHome}/.swiftly/bin/swiftc",
+                    "-DPICO_BOARD=${input:picoBoard}",
+                    "-DPICO_PLATFORM=rp2350-arm-s"
+                ]
+            }
+        },
+        {
+            "label": "Compile Profile Project",
+            "type": "process",
+            "command": "${userHome}/.pico-sdk/cmake/v4.3.4/bin/cmake",
+            "args": [
+                "--build",
+                "${workspaceFolder}/build-profile",
+                "--parallel"
+            ],
+            "dependsOrder": "sequence",
+            "dependsOn": "Check Profile Configuration",
+            "problemMatcher": "$gcc",
+            "windows": {
+                "command": "${env:USERPROFILE}/.pico-sdk/cmake/v4.3.4/bin/cmake.exe"
+            }
+        },
+        {
+            "label": "Check Release Configuration",
+            "type": "process",
+            "command": "${userHome}/.pico-sdk/cmake/v4.3.4/bin/cmake",
+            "args": [
+                "-DSK_BUILD_DIR=${workspaceFolder}/build",
+                "-DSK_CONFIGURE_TASK=Configure Project",
+                "-P",
+                "${workspaceFolder}/cmake/CheckBuildConfigured.cmake"
+            ],
+            "hide": true,
+            "problemMatcher": [],
+            "windows": {
+                "command": "${env:USERPROFILE}/.pico-sdk/cmake/v4.3.4/bin/cmake.exe"
+            }
+        },
+        {
+            "label": "Check Debug Configuration",
+            "type": "process",
+            "command": "${userHome}/.pico-sdk/cmake/v4.3.4/bin/cmake",
+            "args": [
+                "-DSK_BUILD_DIR=${workspaceFolder}/build-debug",
+                "-DSK_CONFIGURE_TASK=Configure Debug Project",
+                "-P",
+                "${workspaceFolder}/cmake/CheckBuildConfigured.cmake"
+            ],
+            "hide": true,
+            "problemMatcher": [],
+            "windows": {
+                "command": "${env:USERPROFILE}/.pico-sdk/cmake/v4.3.4/bin/cmake.exe"
+            }
+        },
+        {
+            "label": "Check Profile Configuration",
+            "type": "process",
+            "command": "${userHome}/.pico-sdk/cmake/v4.3.4/bin/cmake",
+            "args": [
+                "-DSK_BUILD_DIR=${workspaceFolder}/build-profile",
+                "-DSK_CONFIGURE_TASK=Configure Profile Project",
+                "-P",
+                "${workspaceFolder}/cmake/CheckBuildConfigured.cmake"
+            ],
+            "hide": true,
+            "problemMatcher": [],
+            "windows": {
+                "command": "${env:USERPROFILE}/.pico-sdk/cmake/v4.3.4/bin/cmake.exe"
+            }
+        }
+    ],
+    "inputs": [
+        {
+            "id": "picoBoard",
+            "type": "pickString",
+            "description": "Radio-clock board",
+            "options": [
+                "pico2_w",
+                "pico2"
+            ],
+            "default": "pico2_w"
+        }
+    ]
+}

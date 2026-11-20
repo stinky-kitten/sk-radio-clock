@@ -1,0 +1,33 @@
+{
+  "abi_version": 1,
+  "asset_sha256": "c7a996a3ae00d3ad6d37c9996b6099bde4871a6e1e77a4bffa83e93aa59c9506",
+  "asset_url": "https://github.com/stinky-kitten/skls-hub75-dist/releases/download/v0.1.0-experimental.3/skls-hub75-0.1.0-experimental.3-rp2350-arm-s.zip",
+  "component_sha256": {
+    "LICENSES/NOTICE.md": "8219bc7233600003b02074a15a9935af6f72d5ae002ea85259b69f9e3cbad9f3",
+    "LICENSES/PICO-EXAMPLES-BSD-3-Clause.txt": "483f865953435b66c443dee7558debe3cc3cf8fcbb6a112fd9fc6a795d53f1f6",
+    "LICENSES/PICO-SDK-BSD-3-Clause.txt": "483f865953435b66c443dee7558debe3cc3cf8fcbb6a112fd9fc6a795d53f1f6",
+    "LICENSES/PIO-PROVENANCE.md": "710aceb759cf8c4baedb157623a184f6ee9b8307c76fba0a19e47933c022d4cf",
+    "LICENSES/SKLS-HUB75-BINARY-LICENCE-1.0.txt": "001dce6e8b12b2f14590525a45a7ad7280df6db6d9d3d44c1491672450558879",
+    "README.md": "df52a5ecee67d3b35e970ce8570e9d181ba1aa71361fdcf1f3ab847dd206ccd4",
+    "cmake/SKLSHUB75Config.cmake": "5635da88f1883361271892ae076388a1271b4520573c7b9c186f8eb99a25f57d",
+    "cmake/SKLSHUB75ConfigVersion.cmake": "5ed71e1c321c5da2c53fd6f9caff53e0a9b1cff12f78c03aaacbca73c92b3533",
+    "docs/ABI.md": "bc2590da5a9395b3e26dba543360bc9e47bcea89b93815678e4ead0e43f77b20",
+    "docs/RELEASE.md": "82898fd96b512b000314fea670daae8ce1e89f8d63a5e25cc5973acbc5ff7af4",
+    "docs/SWIFT.md": "2b173756e1ab10d2483961fa353a6e33bef539cc4996b9deb657556e38e72c5f",
+    "include/SKLSHUB75.apinotes": "d652222238c438516eddbe229251fac018e4fb6c44d2ee892db42216b5e2f950",
+    "include/module.modulemap": "1846629824e8730addef61d1bd9069110fc5cce48609d36754174261273fd2b3",
+    "include/skls_hub75/skls_hub75.h": "2a4569729b5cec367e138dda0cfb7812c65799c988c17d2050ff1536f408e181",
+    "include/skls_hub75/skls_hub75_binary_config.h": "5c9e1bef98ed8d1007c03ac2f9eb75ce141fbf215e521c98dc6f7a2fcaa39ef0",
+    "include/skls_hub75/skls_hub75_config.h": "f52e4ff23db37061f2c9a318b4dc2376c8f847fe51989a38e3d9cd9676bef65f",
+    "include/skls_hub75/skls_hub75_config_validation.h": "49868c6e39de42661df3949cca144ff30760ee84b1c11d126c0c27237ae2a324",
+    "include/skls_hub75/skls_hub75_driver.h": "a7e586374d48905de02cebb09d094a273385beff77256d32532383814c62ab47",
+    "include/skls_hub75/skls_hub75_presets.h": "14af48dbc4cff87011c960ebf1455a1de51694314ddbd66d16cf14b0764eaf66",
+    "include/skls_hub75/skls_hub75_profile.h": "46f36032ef5b754396f5b3c47c00aeb217a04c9e02b7ad1196354b3f6f7b30e6",
+    "include/skls_hub75/skls_hub75_render_request.h": "676e851f01e8489b496fbf23462e6823c205d7ebbe1cc34065498e0a9cc33384",
+    "lib/libskls_hub75.a": "4c7b918a40e419e54f530f5594c2b5a5c93529c7bc68b8e17a0c842a055c3dd9"
+  },
+  "manifest_sha256": "8073ae2a7b97356147abeb454d52bdd7ae49a8f72f8b22eeaf530fb79861c746",
+  "publication_status": "published",
+  "repository_url": "https://github.com/stinky-kitten/skls-hub75-dist.git",
+  "version": "0.1.0-experimental.3"
+}
